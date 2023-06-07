@@ -9,10 +9,6 @@
     </context-param>
     <context-param>
         <param-name>mapper-location</param-name>
-        <param-value>/WEB-INF/mapper/</param-value>
+        <param-value>com/model/dao/memberDAO/xml</param-value>
     </context-param>
-<!--    <context-param>-->
-<!--        <param-name>mybatis-config</param-name>-->
-<!--        <param-value>/WEB-INF/config/mybatis-config.xml</param-value>-->
-<!--    </context-param>-->
 </web-app>

@@ -1,7 +1,7 @@
 package com.model.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class memberDTO implements Serializable {
     private String memberCode;

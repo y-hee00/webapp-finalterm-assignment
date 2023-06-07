@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import java.io.IOException;
+import java.sql.Date;
 
 @WebServlet("/member/update")
 public class UpdateMemServlet extends HttpServlet {
@@ -18,14 +19,10 @@ public class UpdateMemServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         String memberCode = request.getParameter("memberCode");
-        String birthDate = request.getParameter("birthDate");
-        String phone = request.getParameter("phone");
         String activeStatus = request.getParameter("activeStatus");
 
         memberDTO member = new memberDTO();
         member.setMemberCode(memberCode);
-        member.setBirthDate(birthDate);
-        member.setPhone(phone);
         member.setActiveStatus(activeStatus);
 
         int result = new MemberService().modifyMember(member);

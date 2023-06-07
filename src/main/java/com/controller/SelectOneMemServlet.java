@@ -19,14 +19,14 @@ public class SelectOneMemServlet extends HttpServlet {
         System.out.println("memberCode : " + memberCode);
 
         MemberService memberService = new MemberService();
-        String selectMember = memberService.selectMemberByCode(memberCode);
+        memberDTO memberList = memberService.selectMemberByCode(memberCode);
 
-        System.out.println("selectMember : " + selectMember);
+        System.out.println("memberList : " + memberList);
 
         String path = "";
-        if(selectMember != null){
-            path = "/WEB-INF/views/common/showMemberInfo.jsp";
-            request.setAttribute("selectMember", selectMember);
+        if(memberList != null){
+            path = "/WEB-INF/views/member/selectMember.jsp";
+            request.setAttribute("memberList", memberList);
         } else {
             path = "/WEB-INF/views/common/errorPage.jsp";
             request.setAttribute("message", "환자 정보 조회 실패");

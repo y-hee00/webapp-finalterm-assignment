@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import java.io.IOException;
+import java.sql.Date;
 
 @WebServlet("/member/insert")
 public class InsertMemServlet extends HttpServlet {
@@ -26,11 +27,13 @@ public class InsertMemServlet extends HttpServlet {
         String teamCode = request.getParameter("teamCode");
         String activeStatus = request.getParameter("activeStatus");
 
+
+
         memberDTO member = new memberDTO();
 
         member.setMemberCode(memberCode);
         member.setMemberName(memberName);
-        member.setBirthDate(birthDate);
+        member.setBirthDate((birthDate).replaceAll("-", ""));
         member.setGender(gender);
         member.setDetailInfo(detailInfo);
         member.setPhone(phone);
@@ -45,7 +48,7 @@ public class InsertMemServlet extends HttpServlet {
             request.setAttribute("successCode", "insertMember");
         } else {
             path = "/WEB-INF/views/common/errorPage.jsp";
-            request.setAttribute("message", "환자 정보 수정 실패");
+            request.setAttribute("message", "환자 정보 등록 실패");
         }
 
         request.getRequestDispatcher(path).forward(request, response);

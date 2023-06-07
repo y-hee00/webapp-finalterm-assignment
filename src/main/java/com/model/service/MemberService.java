@@ -26,23 +26,13 @@ public class MemberService {
 
     }
 
-//    public memberDAO selectMemberByCode() {
-//
-//        SqlSession sqlSession = getSqlSession();
-//
-//        memberDAO memberlist = memberDAO.selectMemberByCode();
-//
-//        sqlSession.close();
-//
-//        return memberlist;
-//    }
 
-    public String selectMemberByCode(String memberCode) {
+    public memberDTO selectMemberByCode(String memberCode) {
 
         SqlSession sqlSession = getSqlSession();
         memberDAO = sqlSession.getMapper(memberDAO.class);
 
-        String memberList = memberDAO.selectMemberByCode(sqlSession);
+        memberDTO memberList = memberDAO.selectMemberByCode(sqlSession, memberCode);
 
         sqlSession.close();
 
@@ -97,13 +87,14 @@ public class MemberService {
         int result = memberDAO.deleteMember(code);
 
         if (result > 0) {
+            System.out.println("삭제성공5");
             sqlSession.commit();
         } else {
             sqlSession.rollback();
         }
 
         sqlSession.close();
-
+        System.out.println("삭제성공6");
         return result;
 
 

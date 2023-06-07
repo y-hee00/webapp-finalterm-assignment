@@ -30,25 +30,20 @@
     </select>
 
 
-    <select id="selectMemberByCode">
+    <select id="selectMemberByCode" parameterType="String" resultMap="memberResultMap">
         SELECT
             MEMBER_CODE
              , MEMBER_NAME
              , BIRTH_DATE
              , GENDER
              , DETAIL_INFO
-             , PHONE
              , TEAM_CODE
-             , ACTIVE_STATUS
         FROM MEMBER_INFO
-        WHERE ACTIVE_STATUS = 'Y'
-          AND MEMBER_CODE = #{ memberCode }
+        WHERE MEMBER_CODE = #{ memberCode }
     </select>
 
-    <!-- insert, update, delete 태그는 resultType이 기본 _int로 수행 결과를 반환하므로 작성하지 않음
-         파라미터로 전달된 dto의 필드 이름으로 바인딩 해야 하며, getter를 이용하기 때문에 getter가 없으면 에러 발생
-         파라미터 타입도 객체인 경우 fullClass명으로 작성하며 생략 가능 -->
-    <insert id="insertMenu" parameterType="memberDTO">
+
+    <insert id="insertMember" parameterType="memberDTO">
         INSERT
         INTO MEMBER_INFO
         (
@@ -58,6 +53,7 @@
             , DETAIL_INFO
             , PHONE
             , TEAM_CODE
+            , ACTIVE_STATUS
         )
         VALUES
             (
@@ -67,6 +63,7 @@
             , #{ detailInfo }
             , #{ phone }
             , #{ teamCode }
+            , 'Y'
             )
     </insert>
 
@@ -78,7 +75,7 @@
         WHERE MEMBER_CODE = #{ memberCode }
     </update>
 
-    <delete id="deleteMember" parameterType="hashmap">
+    <delete id="deleteMember" parameterType="_int">
         DELETE
         FROM MEMBER_INFO
         WHERE MEMBER_CODE = #{ memberCode }
