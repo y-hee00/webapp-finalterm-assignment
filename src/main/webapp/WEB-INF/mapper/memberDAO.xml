@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.model.dao.memberDAO">
+
+    <resultMap type="memberDTO" id="memberResultMap">
+        <id property="memberCode" column="MEMBER_CODE"/>
+        <result property="memberName" column="MEMBER_NAME"/>
+        <result property="birthDate" column="BIRTH_DATE"/>
+        <result property="gender" column="GENDER"/>
+        <result property="detailInfo" column="DETAIL_INFO"/>
+        <result property="phone" column="PHONE"/>
+        <result property="teamCode" column="TEAM_CODE"/>
+        <result property="activeStatus" column="ACTIVE_STATUS"/>
+    </resultMap>
+
+    <select id="selectAllMemberList" resultMap="memberResultMap">
+        SELECT
+             MEMBER_CODE
+             , MEMBER_NAME
+             , BIRTH_DATE
+             , GENDER
+             , DETAIL_INFO
+             , PHONE
+             , TEAM_CODE
+             , ACTIVE_STATUS
+        FROM MEMBER_INFO
+        WHERE ACTIVE_STATUS = 'Y'
+        ORDER BY MEMBER_CODE
+    </select>
+
+
+    <select id="selectMemberByCode" parameterType="_int" resultMap="memberResultMap">
+        SELECT
+            MEMBER_CODE
+             , MEMBER_NAME
+             , BIRTH_DATE
+             , GENDER
+             , DETAIL_INFO
+             , PHONE
+             , TEAM_CODE
+             , ACTIVE_STATUS
+        FROM MEMBER_INFO
+        WHERE ACTIVE_STATUS = 'Y'
+          AND MEMBER_CODE = #{ memberCode }
+    </select>
+
+    <!-- insert, update, delete 태그는 resultType이 기본 _int로 수행 결과를 반환하므로 작성하지 않음
+         파라미터로 전달된 dto의 필드 이름으로 바인딩 해야 하며, getter를 이용하기 때문에 getter가 없으면 에러 발생
+         파라미터 타입도 객체인 경우 fullClass명으로 작성하며 생략 가능 -->
+    <insert id="insertMenu" parameterType="=memberDTO">
+        INSERT
+        INTO MEMBER_INFO
+        (
+            MEMBER_NAME
+            , BIRTH_DATE
+            , GENDER
+            , DETAIL_INFO
+            , PHONE
+            , TEAM_CODE
+        )
+        VALUES
+            (
+                #{ memberName }
+            , #{ birthDate }
+            , #{ gender }
+            , #{ detailInfo }
+            , #{ phone }
+            , #{ teamCode }
+            )
+    </insert>
+
+    <update id="updateMember" parameterType="memberDTO">
+        UPDATE
+            MEMBER_INFO
+        SET BIRTH_DATE= #{ birthDate }
+          , PHONE = #{ phone }
+          , ACTIVE_STATUS = #{ activeStatus }
+        WHERE MEMBER_CODE = #{ memberCode }
+    </update>
+
+    <delete id="deleteMember" parameterType="hashmap">
+        DELETE
+        FROM MEMBER_INFO
+        WHERE MEMBER_CODE = #{ memberCode }
+    </delete>
+</mapper>
