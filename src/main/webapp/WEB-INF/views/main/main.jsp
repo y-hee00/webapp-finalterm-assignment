@@ -24,7 +24,7 @@
     환자명 : <input type="text" name="memberName"><br>
     생년월일 : <input type="date" name="birthDate"><br>
     성별 : <input type="text" name="gender"><br>
-    처치내용 : <input type="text" name="detailInfo"><br>
+    진단내용 : <input type="text" name="detailInfo"><br>
     전화번호 : <input type="tel" name="phone"><br>
     진료과코드 :
     <select name="teamCode">

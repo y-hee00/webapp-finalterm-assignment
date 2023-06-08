@@ -27,7 +27,7 @@ public class SelectMemServlet extends HttpServlet {
             request.setAttribute("memberlist2", memberlist2);
         } else {
             path="/WEB-INF/views/common/errorPage.jsp";
-            request.setAttribute("message", "환자 목록 조회 실패");
+            request.setAttribute("message", "입원환자 목록 조회 실패");
         }
 
         request.getRequestDispatcher(path).forward(request, response);

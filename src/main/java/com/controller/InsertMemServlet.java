@@ -47,7 +47,7 @@ public class InsertMemServlet extends HttpServlet {
             request.setAttribute("successCode", "insertMember");
         } else {
             path = "/WEB-INF/views/common/errorPage.jsp";
-            request.setAttribute("message", "환자 정보 등록 실패");
+            request.setAttribute("message", "입원환자 정보 등록 실패");
         }
 
         request.getRequestDispatcher(path).forward(request, response);
