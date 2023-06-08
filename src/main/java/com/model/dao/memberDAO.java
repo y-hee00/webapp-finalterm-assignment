@@ -10,6 +10,8 @@ import java.util.Map;
 public interface memberDAO {
     List<memberDTO> selectAllMemberList();
 
+    List<memberDTO> selectMemberList();
+
     memberDTO selectMemberByCode(SqlSession sqlSession, @Param("memberCode") String memberCode);
 
     int insertMember(memberDTO member);
@@ -18,4 +20,6 @@ public interface memberDAO {
 
 
     int deleteMember(int code);
+
+
 }

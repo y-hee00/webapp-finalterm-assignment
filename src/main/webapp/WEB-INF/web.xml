@@ -11,4 +11,16 @@
         <param-name>mapper-location</param-name>
         <param-value>com/model/dao/memberDAO/xml</param-value>
     </context-param>
+    <filter>
+        <filter-name>encoding</filter-name>
+        <filter-class>com.common.filter.EncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding-type</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encoding</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

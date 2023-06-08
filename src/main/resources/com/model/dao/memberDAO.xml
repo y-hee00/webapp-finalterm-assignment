@@ -25,6 +25,20 @@
              , TEAM_CODE
              , ACTIVE_STATUS
         FROM MEMBER_INFO
+        ORDER BY MEMBER_CODE
+    </select>
+
+    <select id="selectMemberList" resultMap="memberResultMap">
+        SELECT
+            MEMBER_CODE
+             , MEMBER_NAME
+             , BIRTH_DATE
+             , GENDER
+             , DETAIL_INFO
+             , PHONE
+             , TEAM_CODE
+             , ACTIVE_STATUS
+        FROM MEMBER_INFO
         WHERE ACTIVE_STATUS = 'Y'
         ORDER BY MEMBER_CODE
     </select>

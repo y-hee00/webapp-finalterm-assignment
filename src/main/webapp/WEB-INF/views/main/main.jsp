@@ -6,8 +6,11 @@
 <body>
 <jsp:include page="../common/header.jsp"/>
 
-<h3>MEMBER_INFO 테이블에서 환자 전체 정보 조회 (치료중인 환자만 조회할 것) : /member_info/list (get)</h3>
-<button onclick="location.href='${pageContext.servletContext.contextPath}/member/list'">환자정보 전체 조회하기</button>
+<h3>MEMBER_INFO 테이블에서 전체 환자 정보 조회</h3>
+<button onclick="location.href='${pageContext.servletContext.contextPath}/member/allList'">전체환자 조회하기</button>
+
+<h3>MEMBER_INFO 테이블에서 입원 환자 전체 정보 조회</h3>
+<button onclick="location.href='${pageContext.servletContext.contextPath}/member/list'">입원환자 조회하기</button>
 
 <h3>MEMBER_INFO 테이블에서 MEMBER_CODE를 이용하여 환자 정보 조회해오기</h3>
 <form action="member/select">
@@ -16,7 +19,7 @@
     <button type="submit">조회하기</button>
 </form>
 
-<h3>MEMBER_INFO 테이블에서 신규 환자 정보 추가 (필요한 정보를 입력받을 수 있는 form을 만들어서 추가할 것) : /member_info/insert (post)</h3>
+<h3>MEMBER_INFO 테이블에서 신규 환자 정보 추가</h3>
 <form action="${ pageContext.servletContext.contextPath }/member/insert" method="post">
     환자명 : <input type="text" name="memberName"><br>
     생년월일 : <input type="date" name="birthDate"><br>
@@ -31,21 +34,21 @@
         <option value="4">정형외과</option>
     </select>
     <br>
-    <button type="submit">신규 환자 등록</button>
+    <button type="submit">등록하기</button>
 </form>
 
-<h3>MEMBER_INFO 테이블에서 환자 정보 수정 (환자코드와 변경할 정보를 입력 받아 코드와 일치하는 환자의 정보 변경 - 원하는 데이터 변경) : /member_info/update (post)</h3>
+<h3>MEMBER_INFO 테이블에서 환자 입/퇴원 정보 수정</h3>
 <form action="${ pageContext.servletContext.contextPath }/member/update" method="post">
     환자코드 : <input type="text" name="memberCode"><br>
     입퇴원여부 : <input type="text" name="activeStatus"><br>
-    <button type="submit">입/퇴원 수정</button>
+    <button type="submit">수정하기</button>
 </form>
 
 
-<h3>MEMBER_INFO 테이블에서 환자 정보 삭제 (환자코드 입력 받아 코드와 일치하는 행 삭제) : /member_info/delete (post)</h3>
+<h3>MEMBER_INFO 테이블에서 환자 정보 삭제</h3>
 <form action="${ pageContext.servletContext.contextPath }/member/delete" method="post">
     환자코드 : <input type="text" name="memberCode"><br>
-    <button type="submit">환자 정보 삭제</button>
+    <button type="submit">삭제하기</button>
 </form>
 
 

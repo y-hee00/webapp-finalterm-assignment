@@ -4,9 +4,8 @@ import com.model.dto.memberDTO;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
-import java.util.Map;
 
-import static com.common.Template.getSqlSession;
+import static com.common.jdbc.Template.getSqlSession;
 
 public class MemberService {
 
@@ -24,6 +23,18 @@ public class MemberService {
         return allMemberList;
 
 
+    }
+
+    public List<memberDTO> selectMemberList() {
+
+        SqlSession sqlSession = getSqlSession();
+        memberDAO = sqlSession.getMapper(memberDAO.class);
+
+        List<memberDTO> allMemberList2 = memberDAO.selectMemberList();
+
+        sqlSession.close();
+
+        return allMemberList2;
     }
 
 
@@ -99,4 +110,6 @@ public class MemberService {
 
 
     }
+
+
 }

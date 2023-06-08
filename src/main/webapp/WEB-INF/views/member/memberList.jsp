@@ -29,6 +29,19 @@
             <td>${ member.activeStatus }</td>
         </tr>
     </c:forEach>
+
+    <c:forEach items="${ requestScope.memberlist2}" var="member">
+        <tr>
+            <td>${ member.memberCode }</td>
+            <td>${ member.memberName }</td>
+            <td>${ member.birthDate }</td>
+            <td>${ member.gender }</td>
+            <td>${ member.detailInfo }</td>
+            <td>${ member.phone }</td>
+            <td>${ member.teamCode }</td>
+            <td>${ member.activeStatus }</td>
+        </tr>
+    </c:forEach>
 </table>
 
 </body>

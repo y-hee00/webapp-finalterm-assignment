@@ -14,15 +14,15 @@
           switch (successCode){
               case 'insertMember' :
                   successMessage = '신규 환자 등록 성공!';
-                  movePath = '${pageContext.servletContext.contextPath}/member/list';
+                  movePath = '${pageContext.servletContext.contextPath}/member/allList';
                   break;
               case 'updateMember' :
                   successMessage = '환자 정보 수정 성공!';
-                  movePath = '${pageContext.servletContext.contextPath}/member/list';
+                  movePath = '${pageContext.servletContext.contextPath}/member/allList';
                   break;
               case 'deleteMember' :
                   successMessage = '환자 정보 삭제 성공!';
-                  movePath = '${pageContext.servletContext.contextPath}/member/list';
+                  movePath = '${pageContext.servletContext.contextPath}/member/allList';
                   break;
           }
 
